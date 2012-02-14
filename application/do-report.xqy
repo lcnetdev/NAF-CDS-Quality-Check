@@ -210,23 +210,22 @@ let $email-attachments :=
         let $violations := xs:string($tr)
         return
             if ( xs:integer($tr/@violations) > 10 and $tr/@report-results eq "true") then
-                let $attachment-fname := fn:replace( xs:string($tr/@name) , " |=|\.|\$" , "")
+                let $attachment-fname := fn:replace( xs:string($tr/@name) , " |=|\.|\$,'" , "")
                 let $attachment-fname := fn:concat($email-attachment-base-filename, "-", $attachment-fname , ".txt")
                 return
                     fn:concat(
-                        "Content-Type: text/plain", $email-newline,
+                        "Content-Type: text/plain; charset=UTF-8", $email-newline,
                         "Content-Disposition: attachment; filename=", $attachment-fname, $email-newline,
                         "Content-Transfer-Encoding: base64", $email-newline,
                         $email-newline,
-                        xdmp:base64-encode($violations), $email-newline,
-                        "--",$email-boundary,$email-newline
+                        xdmp:base64-encode(fn:replace($violations, "\n", $email-newline)), $email-newline
                     )
             else (),
-        $email-newline)
+	fn:concat("--",$email-boundary,$email-newline))
         
 let $email-content := concat(
     "--",$email-boundary,$email-newline,
-    $email-newline,
+	"Content-Type: text/plain; charset=UTF-8", $email-newline,
     $report, $email-newline,
     "--",$email-boundary,$email-newline,
     $email-attachments
@@ -244,7 +243,7 @@ let $email :=
         </rf:from>
         <rf:to>
         {
-            for $address in $constants:MAIL_DAILYNAMES_TO
+            for $address in $constants:MAIL_DAILYNAMES_TO/em:Address
             return $address
         }
         </rf:to>

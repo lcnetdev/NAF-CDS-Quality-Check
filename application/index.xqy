@@ -58,7 +58,7 @@ let $filestable :=
             <xhtml:td style="width: 20%;">Action</xhtml:td>
         </xhtml:tr>
         {
-            for $f in $files/dir:entry[1 to 30]
+            for $f in $files/dir:entry[1 to 30 and xs:string(dir:filename) != "empty.txt"]
             let $fname := xs:string($f/dir:filename)
             let $processed-date := 
                 if ( $processed-files/activity:processed[@file = $fname] ) then

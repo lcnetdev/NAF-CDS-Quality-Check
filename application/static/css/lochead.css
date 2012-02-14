@@ -1,0 +1,224 @@
+#h-wrapper {
+background:#900 url(/images/2011/img-head/img_lochead.png) 0 0 no-repeat;
+padding: 2px 0 0 0;
+}
+#header {
+font-family:Verdana, Geneva, sans-serif;
+font-size:11px;
+background-color:#fff;
+padding:8px 20px 9px 20px;
+margin-bottom:0;
+overflow:hidden;
+}
+#header .logo {
+float:left;
+width:170px;
+padding:6px 0 2px 0;
+border-right:1px dotted #ccc;
+margin-right:20px;
+}
+#header .nav {
+float:left;
+width:430px;
+padding:7px 0;
+border-right:1px dotted #ccc;
+}
+#header img {
+border:0;
+}
+	#header .nav ul {
+	margin:0;
+	padding:0;
+	}
+	#header .nav ul li {
+	margin:0;
+	padding:0;
+	display:inline;
+	background:#ccc;
+	}
+	/* web fonts*/ 
+/*	@font-face {
+	font-family: 'CantarellRegular';
+	src: url('http://cdn.loc.gov/fonts/cantarell-regular-webfont.eot');
+	src: local('?'), url('http://cdn.loc.gov/fonts/cantarell-regular-webfont.woff') format('woff'), url('http://cdn.loc.gov/fonts/cantarell-regular-webfont.ttf') format('truetype'), url('http://cdn.loc.gov/fonts/cantarell-regular-webfont.svg#webfontGyQ8eBAL') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	}
+	@font-face {
+	font-family: 'CantarellBold';
+	src: url('http://cdn.loc.gov/fonts/cantarell-bold-webfont.eot');
+	src: local('?'), url('http://cdn.loc.gov/fonts/cantarell-bold-webfont.woff') format('woff'), url('http://cdn.loc.gov/fonts/cantarell-bold-webfont.ttf') format('truetype'), url('http://cdn.loc.gov/fonts/cantarell-bold-webfont.svg#webfontibHu5mh2') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	}
+*/
+	#header .nav ul li a,
+	a.btn-loc:link,
+	a.btn-loc:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:11px;
+	line-height:1.1;
+	color: #445d76;
+	text-decoration: none;
+	border:1px solid #a5b3c5;
+	padding:7px 10px 8px 10px;
+	margin-left:0;
+	margin-right:12px;
+	background-color:#fff;
+	text-transform:uppercase;
+	display:block;
+	float:left;
+	-webkit-transition: all 0.2s ease-in;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+	}
+	#header .nav ul li a.last,
+	a.btn-loc.last {
+	margin-right:0;
+	}
+	a.btn-loc.right {
+	float:right;
+	margin:0;
+	}
+	#header .nav ul li a:hover,
+	#header .nav ul li a:focus,
+	a.btn-loc:hover,
+	a.btn-loc:focus {
+	border-color:#8898ae;
+	border-color:#a5b3c5;
+	color:#2b3f56;
+	-webkit-box-shadow: 0px 0px 4px #a5b3c5;
+	-moz-box-shadow: 0px 0px 4px #a5b3c5;
+	box-shadow: 0px 0px 4px #a5b3c5;
+	}
+	/*border radius*/
+	#header .nav ul li a,
+	a.btn-loc {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius:4px;
+	}
+	/*gradients*/
+	#header .nav ul li a,
+	a.btn-loc {
+	background:-webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.24, rgb(243,247,247)),
+	color-stop(0.39, rgb(255,255,255))
+	);
+	background:-moz-linear-gradient(
+	center bottom,
+	rgb(243,247,247) 24%,
+	rgb(255,255,255) 39%
+	);
+	}
+	.no-cssgradients #header .nav ul li a,
+	.no-cssgradients a.btn-loc {
+	background:#fff url(/images/2011/img-head/img_lochead.png) 0 100% repeat-x;
+	}
+#header .search {
+float:right;
+width:301px;
+padding-top:8px;
+}
+#header .search .options {
+color: #666;
+}
+#header .search a:link,
+#header .search a:visited {
+color: #666;
+text-decoration: none;
+}
+#header .search a:focus,
+#header .search a:hover,
+#header .search a:active {
+color: #333;
+text-decoration: underline;
+}
+#header .search form {
+margin:0;
+}
+#header .search .search_wrap {
+width:251px; /* search width - 4 */
+background-color:#fff;
+border:1px solid #ccc;
+float:right;
+}
+#header .search label.search_label {
+color: #666;
+float:left;
+margin-top:6px;
+font-weight:normal;
+}
+#header .search input,
+#header .search button {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+border-radius:0;
+-moz-border-radius: 0;
+-webkit-border-radius: 0;
+margin:0;
+padding:5px;
+}
+#header .search input {
+width:254px;
+width:208px;
+background-color:transparent;
+border:none;
+float:left;
+clear:left;
+-webkit-appearance: textfield;
+}
+#header .search input:focus { 
+border-color: #666 #ccc #ccc #666;
+}
+#header .search button { 
+font-weight:bold;
+background-color:#06c;
+color:#fff;
+background-image:none;
+border:none;
+float:right;
+clear:right;
+max-width:31px; /* firefox  */
+overflow: visible;
+cursor: pointer;
+}
+#header .search button:hover, 
+#header .search button:focus,
+#header .search .buttons a:active {
+background-color:#0371e0;
+}
+
+/********************
+breadcrumb
+********************/
+#crumb_nav {
+clear: both;
+padding: 10px 15px;
+color: #fff;
+background-color: #000;
+border-top: 1px solid #999;
+border-bottom: 1px solid #333;
+text-align: left;
+font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+}
+#crumb_nav span {
+color: #ccc;
+font-weight: bold;
+}
+#crumb_nav a:link,
+#crumb_nav a:visited {
+color: #ccc;
+text-decoration: underline;
+}
+#crumb_nav a:focus,
+#crumb_nav a:hover,
+#crumb_nav a:active {
+color: #fff;
+text-decoration: underline;
+}
+

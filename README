@@ -1,0 +1,12 @@
+Quality Check for CDS Daily Names Files
+
+This package provides a way to run a set of quality checks over a collection of MARC/XML records.  The number of records affected are tabulated and the results displayed on screen and emailed to one or more recipients.
+
+There are files included to assist with the retrieval of MARC/XML Names CDS files from an FTP server and save them to a local directory.  It can be used as a cronjob.
+
+The application/ directory is a small XQuery application for the MarkLogic Application/Database Server.  It does not require a database.  Only an application server is needed.  The application/ directory should be the server root.
+
+The MARC/XML files are read from the local directory.  They can be processed individually via the web interface.  There is also an option to upload a MARC/XML file.  
+
+The rules are defined in the constants.xqy file.  They are embedded XQuery that is "eval"uated in turn.
+

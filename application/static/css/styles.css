@@ -1,0 +1,5 @@
+@import url("loc_reset_v2.css"); /* reset */
+@import url("lochead.css"); /* global header */
+@import url("locfoot.css"); /* global footer */
+@import url("loc_standard_v2_w.css");  /* standard 1024 */
+@import url("id.css"); /* site specific */

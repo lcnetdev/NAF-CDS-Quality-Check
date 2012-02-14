@@ -1,0 +1,136 @@
+#f-wrapper {
+background:#900 url(/images/2011/img-foot/img_locfoot.png) 0 0 no-repeat;
+padding: 2px 0 0 0;
+margin-top:6px;
+overflow:hidden;
+clear:both;
+}
+#footer {
+font-family:Verdana, Geneva, sans-serif;
+font-size:11px;
+background-color:#fff;
+padding:23px 25px 15px 25px;
+overflow:hidden;
+position:relative;
+}
+#footer h2 {
+font-family:Georgia, "Times New Roman", Times, serif;
+font-size: 1.45em;
+line-height:1em;
+margin: 0 0 1em 0;
+color:#6a6a6b;
+}
+#footer img {
+border:0;
+}
+#footer ul, ol {
+margin: 0 0 1.5em 0;
+padding-left: 2.5em;
+}		
+#footer ul li, ol li {
+margin-bottom: 4px;
+}
+#footer ul.plain {
+list-style: none;
+padding-left: 0px;
+}
+#footer ul.plain li {
+padding: 0;
+}
+#footer a:link,
+#footer a:visited {
+color: #666;
+text-decoration: none;
+}
+#footer a:visited {
+color: #609;
+}
+#footer a:focus,
+#footer a:hover,
+#footer a:active {
+text-decoration: underline;
+}
+#footer a:focus img,
+#footer a:hover img,
+#footer a:active img {
+-webkit-box-shadow: 0px 0px 6px #999;
+-moz-box-shadow: 0px 0px 6px #999;
+box-shadow: 0px 0px 6px #999;
+}
+#footer .cols {
+width:165px;
+margin-right:10px;
+float:left;
+}
+#footer .cols.heading {
+width:200px;
+}
+#footer h3 {
+font-size:.95em;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+color:#666;
+margin: 0 0 0.4em 0;
+}
+#footer p {
+color:#666;
+}
+#footer p.nomargin {
+margin-bottom:0;
+}
+#footer p.links {
+clear:both;
+padding-top:30px;
+text-align:center;
+margin-bottom:0;
+}
+#footer .speech a {
+position:absolute;
+right:25px;
+bottom:15px;
+padding-right:15px;
+background:transparent url(/images/2011/img-foot/img_locfoot.png) 100% -99px no-repeat;
+}
+#footer .speech a:link,
+#footer .speech a:focus,
+#footer .speech a:hover {
+background-position: 100% -99px;
+}
+#footer .speech a:visited {
+background-position: 100% -149px;
+}
+/* external link for footer */
+#footer a.external.foot {
+background: transparent url(/images/2011/img-foot/img_locfoot.png) 100% -197px no-repeat;
+padding: 0 10px 0 0;
+}
+#footer a.external.foot span {
+display:none;
+}
+#footer a.external.foot:link,
+#footer a.external.foot:focus,
+#footer a.external.foot:hover {
+background-position: 100% -197px;
+}
+#footer a.external.foot:hover {
+text-decoration:underline;
+}
+#footer a.external.foot:visited {
+background-position: 100% -247px;
+}
+/* more link for footer */
+#footer a.ar-more.foot {
+background: transparent url(/images/2011/img-foot/img_locfoot.png) 100% -296px no-repeat;
+padding: 0 8px 0 0 ;
+text-decoration:none;
+}
+#footer a.ar-more.foot:link,
+#footer a.ar-more.foot:focus,
+#footer a.ar-more.foot:hover {
+background-position: 100% -296px;
+}
+#footer a.ar-more.foot:hover {
+text-decoration:underline;
+}
+#footer a.ar-more.foot:visited {
+background-position: 100% -346px;
+}

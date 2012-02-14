@@ -1,0 +1,324 @@
+/********************
+ * This is going to require some work.  
+ * Vocab Deescriptions page (using Accordian) will need recoding.
+ * Images will have to be saved locally.
+ * Search results has some oddities.
+ * Header and Footer stuff requires, at the minimum, applying different
+ * CSS styles to divs (if not modifying the HTML outright).
+********************/
+
+.box-success {
+	background-color:#80E680;
+}
+
+/********************
+ID table
+********************/
+table.id-std {
+border-width: 0;
+margin: 5px 0;
+}
+table.id-std th, table.id-std td {
+border-width: 0;
+padding: 7px 7px;
+vertical-align:bottom;
+}
+table.id-std th {
+background-color: #e6e4d7;
+}
+table.id-std tr.alt td {
+background-color: #f7f6e4;
+}
+table.id-std td.underline {
+background: transparent url(../images/dot.gif) 0 bottom repeat-x;
+}
+
+/********************
+ID search boxes
+********************/
+.idsearch {
+width:618px; /* kefo-change */
+margin: 0 auto;
+}
+.idsearch.home {
+width:auto;
+}
+.idsearch form label,
+.idsearch form input,
+.idsearch form select {
+vertical-align:top;
+}
+.idsearch form {
+background-color:#f0f0f0;
+border:1px solid #e5e5e5;
+padding:7px 7px 15px 7px;
+margin-bottom:1em;
+height:1%;
+}
+.idsearch.home form {border:none;}
+.idsearch.download form {
+background-color:#f7f6e4;
+}
+.idsearch form .inner-2col-left {float:left;width:45%;}
+.idsearch form .inner-2col-right {float:left;width:55%;}
+.idsearch form label {
+font-weight:bold;
+display:block;
+}
+.idsearch form input.sm-w,
+.idsearch form input.med-w,
+.idsearch form input.long-w {
+width:200px;
+border:1px solid #999;
+font-size:12px;
+}
+.idsearch form input.sm-w {
+width:173px;
+margin-bottom:1em;
+}
+.idsearch form input.long-w {
+width:413px; 
+margin-right:10px;
+}
+.idsearch form select.sm-w,
+.idsearch form select.med-w,
+.idsearch form select.long-w {
+width:200px;
+height:80px;
+border:1px solid #999;
+font-size:12px;
+margin-right:10px;
+}
+.idsearch form select.sm-w {
+width:175px;
+margin-top:2px;
+margin-bottom:1em;
+}
+.idsearch form select.long-w {
+width:415px;
+margin-top:2px;
+}
+.idsearch form select.long-w-single {
+width:415px;
+border:1px solid #999;
+font-size:12px;
+margin-right:10px;
+}
+.idsearch form h2 {
+color:#666;
+margin-bottom:1em;
+}
+.idsearch form small {
+color:#666;
+}
+
+
+/*********************   
+ * Tab nav
+ * Imported from: http://cdn.loc.gov/js/tabs/loc_tabs.css
+*********************/
+ul.tabnav {
+margin: 0;
+padding: 0;
+list-style: none;
+height: 26px;
+border-bottom: 1px solid #ccc;
+border-left: 1px solid #ccc;
+}
+ul.tabnav li {
+float: left;
+margin: 0;
+padding: 0;
+height: 25px;
+line-height: 25px;
+border: 1px solid #ccc;
+margin-bottom: -1px;
+margin-right:4px;
+background: #eee url(http://cdn.loc.gov/js/tabs/tabs-bg.gif) left bottom repeat-x;
+position: relative;
+}
+ul.tabnav li.first {
+border-left: none;
+}
+ul.tabnav li a,
+ul.tabnav li a:visited {
+text-decoration: none;
+color: #666;
+display: block;
+padding: 0 15px;
+border: 1px none #fff;
+outline: none;
+}
+ul.tabnav li a:hover,
+ul.tabnav li a:focus {
+background: #fff;
+color: #666;
+}
+ul.tabnav li a:visited,
+ul.tabnav li a:active,
+ul.tabnav li a:hover {
+text-decoration: none;
+}
+ul.tabnav li.active,
+ul.tabnav li.active a,
+ul.tabnav li.active a:hover,
+ul.tabnav li.active a:visited  {
+background: #fff;
+border-bottom: 1px solid #fff;
+color:#900;
+font-weight:bold;
+text-decoration:none;
+}
+.tab_container {
+border: 1px solid #ccc;
+border-top: none;
+clear: both;
+padding:15px 10px 10px 10px;
+margin-bottom:1.25em;
+}
+.tab_container.noborder {
+border: none;
+padding:15px 0 0 0;
+}
+.tab_content {
+background-color:transparent;
+}
+
+/*********************   
+ * Button CSS
+ * Courtesy of http://hellohappy.org/css3-buttons/
+*********************/
+/* cupid green (inspired by okcupid.com)
+*******************************************************************************/
+button.pass {
+  background-color: #7fbf4d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#7fbf4d), to(#63a62f));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -moz-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -ms-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: -o-linear-gradient(top, #7fbf4d, #63a62f);
+  background-image: linear-gradient(top, #7fbf4d, #63a62f);
+  border: 1px solid #63a62f;
+  border-bottom: 1px solid #5b992b;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -moz-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -ms-box-shadow: inset 0 1px 0 0 #96ca6d;
+  -o-box-shadow: inset 0 1px 0 0 #96ca6d;
+  box-shadow: inset 0 1px 0 0 #96ca6d;
+  color: #fff;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #4c9021;
+  width: 150px; }
+
+button.fail {
+  background-color: #f00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f00), to(#CC0000));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #f00, #CC0000);
+  background-image: -moz-linear-gradient(top, #f00, #CC0000);
+  background-image: -ms-linear-gradient(top, #f00, #CC0000);
+  background-image: -o-linear-gradient(top, #f00, #CC0000);
+  background-image: linear-gradient(top, #f00, #CC0000);
+  border: 1px solid #f00;
+  border-bottom: 1px solid #ffb2b2;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 1px 0 0 #CC0000;
+  -moz-box-shadow: inset 0 1px 0 0 #CC0000;
+  -ms-box-shadow: inset 0 1px 0 0 #CC0000;
+  -o-box-shadow: inset 0 1px 0 0 #CC0000;
+  box-shadow: inset 0 1px 0 0 #CC0000;
+  color: #fff;
+  font: bold 11px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  line-height: 1;
+  padding: 7px 0 8px 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 #4c9021;
+  width: 150px; }
+
+/* shiny blue (inspired by rdio iphone interface)
+*******************************************************************************/
+button.shiny-blue {
+  background-color: #759ae9;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#759ae9 0%), to(#376fe0 50%));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #759ae9 0%, #376fe0 50%, #1a5ad9 50%, #2463de 100%);
+  background-image: -moz-linear-gradient(top, #759ae9 0%, #376fe0 50%, #1a5ad9 50%, #2463de 100%);
+  background-image: -ms-linear-gradient(top, #759ae9 0%, #376fe0 50%, #1a5ad9 50%, #2463de 100%);
+  background-image: -o-linear-gradient(top, #759ae9 0%, #376fe0 50%, #1a5ad9 50%, #2463de 100%);
+  background-image: linear-gradient(top, #759ae9 0%, #376fe0 50%, #1a5ad9 50%, #2463de 100%);
+  border-top: 1px solid #1f58cc;
+  border-right: 1px solid #1b4db3;
+  border-bottom: 1px solid #174299;
+  border-left: 1px solid #1b4db3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 0 2px 0 rgba(57, 140, 255, 0.8);
+  -moz-box-shadow: inset 0 0 2px 0 rgba(57, 140, 255, 0.8);
+  -ms-box-shadow: inset 0 0 2px 0 rgba(57, 140, 255, 0.8);
+  -o-box-shadow: inset 0 0 2px 0 rgba(57, 140, 255, 0.8);
+  box-shadow: inset 0 0 2px 0 rgba(57, 140, 255, 0.8);
+  color: #fff;
+  font: bold 12px "helvetica neue", helvetica, arial, sans-serif;
+  padding: 7px 0;
+  text-shadow: 0 -1px 1px #1a5ad9;
+  width: 150px; }
+  button.shiny-blue:hover {
+    background-color: #5d89e8;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#5d89e8 0%), to(#2261e0 50%));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #5d89e8 0%, #2261e0 50%, #044bd9 50%, #0d53de 100%);
+    background-image: -moz-linear-gradient(top, #5d89e8 0%, #2261e0 50%, #044bd9 50%, #0d53de 100%);
+    background-image: -ms-linear-gradient(top, #5d89e8 0%, #2261e0 50%, #044bd9 50%, #0d53de 100%);
+    background-image: -o-linear-gradient(top, #5d89e8 0%, #2261e0 50%, #044bd9 50%, #0d53de 100%);
+    background-image: linear-gradient(top, #5d89e8 0%, #2261e0 50%, #044bd9 50%, #0d53de 100%);
+    cursor: pointer; }
+  button.shiny-blue:active {
+    border-top: 1px solid #1b4db3;
+    border-right: 1px solid #174299;
+    border-bottom: 1px solid #133780;
+    border-left: 1px solid #174299;
+    -webkit-box-shadow: inset 0 0 5px 2px #1a47a0, 0 1px 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 5px 2px #1a47a0, 0 1px 0 #eeeeee;
+    -ms-box-shadow: inset 0 0 5px 2px #1a47a0, 0 1px 0 #eeeeee;
+    -o-box-shadow: inset 0 0 5px 2px #1a47a0, 0 1px 0 #eeeeee;
+    box-shadow: inset 0 0 5px 2px #1a47a0, 0 1px 0 #eeeeee; }
+    
+/* Z-index of #mask must lower than #boxes .window */
+#mask {
+  position:absolute;
+  z-index:9000;
+  background-color:#000;
+  display:none;
+}
+   
+#loginDiv .window {
+  position:absolute;
+  background-color:#fff;
+  width:200px;
+  height:240px;
+  display:none;
+  z-index:9999;
+  padding:20px;
+} 
+ 
+/* Customize your modal window here, you can add background image too */
+#loginDiv #loginDialog {
+  width:200px;
+  height:233px;
+}

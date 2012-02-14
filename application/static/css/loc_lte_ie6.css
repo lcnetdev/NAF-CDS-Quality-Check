@@ -1,0 +1,114 @@
+/*
+Project:    loc.gov
+Variant:    ie6 and 7 screen
+Date:       01 Apr 2010
+----------------------------------------*/
+
+#content,
+#main_body,
+#main_body_inner,
+#page_head2,
+#page_head2 div,
+#tabnav,
+#tabnav2,
+.fix-float {
+height:1%;
+}
+#left_nav ul, 
+#left_nav ol, 
+#left_nav dl {
+position: relative;
+}
+ul.tabnav li {
+overflow: hidden;
+}
+
+/********************
+footer
+********************/
+#footer .f_container, 
+#footer .f_inner_mid,
+#footer .f_inner_bot {
+height:1%;
+}
+
+/********************
+Jukebox specific styles
+********************/
+#results,
+#results .nav-control,
+#results .nav-top,
+#results .nav-bot,
+#results .body-results,
+#results .body-results ul,
+#results .body-results ul li,
+ul.jb-playlist li {
+height:1%;
+}
+#results .body-results.gallery-view ul li {
+height:216px;
+}
+a.external,
+a.ico_right {
+display:inline-block;
+}
+
+/********************
+link icons
+********************/
+a.external, a.external:hover, a.external:focus {
+background: transparent url(/img-std/i_external.gif) 100% 5px no-repeat;
+padding: 0 10px 0 0;
+}
+a.external span {
+display:none;
+} 
+
+a.ar-more, a.ar-more:hover, a.ar-more:focus {
+padding: 0 8px 0 0 ;
+background: transparent url(/img-std/arrow-dbl-right.gif) right 5px no-repeat;
+}
+a.ar-back, a.ar-back:hover, a.ar-back:focus {
+padding: 0 0 0 8px ;
+background: transparent url(/img-std/arrow-dbl-left.gif) left 5px no-repeat;
+}
+a.ar-more-gray, a.ar-more-gray:hover, a.ar-more-gray:focus {
+padding: 0 8px 0 0 ;
+background: transparent url(/img-std/arrow-dbl-gray-right.gif) right 5px no-repeat;
+}
+a.ar-back-gray, a.ar-back-gray:hover, a.ar-back-gray:focus {
+padding: 0 0 0 8px ;
+background: transparent url(/img-std/arrow-dbl-gray-left.gif) left 5px no-repeat;
+}
+a.enlarge, a.enlarge:hover, a.enlarge:focus,
+a.newwindow, a.newwindow:hover, a.newwindow:focus,
+a.perma, a.perma:hover, a.perma:focus,
+a.print, a.print:hover, a.print:focus,
+a.podcast, a.podcast:hover, a.podcast:focus,
+a.podcast2, a.podcast2:hover, a.podcast2:focus,
+a.rss, a.rss:hover, a.rss:focus,
+a.video, a.video:hover, a.video:focus,
+a.video2, a.video2:hover, a.video2:focus,
+a.audio, a.audio:hover, a.audio:focus,
+a.audio2, a.audio2:hover, a.audio2:focus {
+padding: 0 0 0 16px;
+background-repeat: no-repeat;
+background-position: 0 2px !important;
+background-color:transparent;
+display:inline-block;
+}
+a.enlarge {background-image: url(/img-std/i_enlarge.gif);}
+a.newwindow {background-image: url(/img-std/i_newwindow.gif);}
+a.perma {background-image: url(/img-std/i_permalink.gif);}
+a.print {background-image: url(/img-std/i_print.gif);}
+a.podcast {background-image: url(/img-std/i_podcast.gif);}
+a.podcast2 {background-image: url(/img-std/i_podcast.gif);}
+a.rss {background-image: url(/img-std/i_rss.gif);}
+a.video {background-image: url(/img-std/i_video.gif);}
+a.video2 {background-image: url(/img-std/i_video2.gif);}
+a.audio {background-image: url(/img-std/i_audio.gif);}
+a.audio2 {background-image: url(/img-std/i_audio2.gif);}
+a.ico_right, a.ico_right:hover, a.ico_right:focus {
+padding: 0 16px 0 0;
+background-position: 100% 2px !important;
+}

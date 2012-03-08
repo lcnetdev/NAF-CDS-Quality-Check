@@ -4,6 +4,7 @@
 # Ignore 
 processing/ftp_creds.php
 application/constants.xqy
+application/logs/activity.xml
 data/*/*.xml
 
 # Ignore objects and archives.

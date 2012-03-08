@@ -43,6 +43,11 @@ declare namespace rf="URN:ietf:params:rfc822:";
 (:~
 :   This variable is for the file
 :)
+declare variable $action as xs:string := xdmp:get-request-field("action", "");
+
+(:~
+:   This variable is for the file
+:)
 declare variable $file as xs:string := xdmp:get-request-field("file", "");
 
 (:~
@@ -149,9 +154,16 @@ Source file: ", $marcxml-filename , "
 ",
 fn:string-join(
     for $tr in $testresults/rule
+    let $attachedORinline := 
+        if ( xs:integer($tr/@violations) > 0 and xs:integer($tr/@violations) < 11 and $tr/@report-results eq "true") then
+            "below"
+        else if ( xs:integer($tr/@violations) > 10 and $tr/@report-results eq "true") then
+            "attached"
+        else 
+            "" 
     let $text-matches :=
-        if ( xs:integer($tr/@violations) > 0 ) then
-            fn:concat( xs:string($tr/@violations) , " record(s) matched the pre-processing pattern: (see below/attached '" , $tr/@name  , "')" )
+        if ( xs:integer($tr/@violations) > 0 and $tr/@report-results eq "true") then
+            fn:concat( xs:string($tr/@violations) , " record(s) matched the pre-processing pattern: (see " , $attachedORinline , " '" , $tr/@name  , "')" )
         else
             "No record(s) matched the pre-processing pattern:"
     return
@@ -167,7 +179,7 @@ let $problems :=
         for $tr in $testresults/rule
         let $violations := xs:string($tr)
         return
-            if ( xs:integer($tr/@violations) > 0 and xs:integer($tr/@violations) < 11) then
+            if ( xs:integer($tr/@violations) > 0 and xs:integer($tr/@violations) < 11 and $tr/@report-results eq "true") then
                 $violations
             else
                 (),
@@ -185,18 +197,23 @@ let $report :=
 $problems)
 
 
-let $activity-log-file := xdmp:unquote(xdmp:filesystem-file($constants:ACTIVITY_LOG))
-let $new-processed-element := 
-    element activity:processed {
-        attribute file {$marcxml-filename},
-        attribute datetime {fn:current-dateTime()}
-    }
-let $activity-log := 
-    element activity:activity {
-        $new-processed-element,
-        $activity-log-file/activity:activity/child::node()
-    }
-let $activity-save := xdmp:save($constants:ACTIVITY_LOG,$activity-log)
+let $activity-log-save := 
+    if (fn:not($constants:DEBUG) and $action eq "email") then
+        let $activity-log-file := xdmp:unquote(xdmp:filesystem-file($constants:ACTIVITY_LOG))
+        let $new-processed-element := 
+            element activity:processed {
+                attribute file {$marcxml-filename},
+                attribute datetime {fn:current-dateTime()}
+            }
+        let $activity-log := 
+            element activity:activity {
+                $new-processed-element,
+                $activity-log-file/activity:activity/child::node()
+            }
+        let $activity-save := xdmp:save($constants:ACTIVITY_LOG,$activity-log)
+        return fn:true()
+    else
+        fn:false()
 
 
 let $email-newline := "&#13;&#10;"
@@ -231,28 +248,32 @@ let $email-content := concat(
     $email-attachments
 )
 
+
 let $email :=
-    xdmp:email(
-    <em:Message>
-        <rf:subject>NACO Quality Report for {$email-attachment-base-filename}</rf:subject>
-        <rf:from>
-            <em:Address>
-                <em:name>Ford, Kevin</em:name>
-                <em:adrs>kefo@loc.gov</em:adrs>
-            </em:Address>
-        </rf:from>
-        <rf:to>
-        {
-            for $address in $constants:MAIL_DAILYNAMES_TO/em:Address
-            return $address
-        }
-        </rf:to>
-        <rf:content-type>{$email-content-type}</rf:content-type>
-        <em:content xml:space="preserve">
-            {$email-content}
-        </em:content>
-    </em:Message>
-    )
+    if (fn:not($constants:DEBUG) and $action eq "email") then
+        xdmp:email(
+        <em:Message>
+            <rf:subject>NACO Quality Report for {$email-attachment-base-filename}</rf:subject>
+            <rf:from>
+                <em:Address>
+                    <em:name>Ford, Kevin</em:name>
+                    <em:adrs>kefo@loc.gov</em:adrs>
+                </em:Address>
+            </rf:from>
+            <rf:to>
+            {
+                for $address in $constants:MAIL_DAILYNAMES_TO/em:Address
+                return $address
+            }
+            </rf:to>
+            <rf:content-type>{$email-content-type}</rf:content-type>
+            <em:content xml:space="preserve">
+                {$email-content}
+            </em:content>
+        </em:Message>
+        )
+    else 
+        ()
   
 let $html := 
     <xhtml:html>
@@ -273,7 +294,15 @@ let $html :=
                     <xhtml:div>
                         <xhtml:p><xhtml:a href="/">Back to index</xhtml:a></xhtml:p>
                         <xhtml:p>
-                            The following was emailed to:
+                            {
+                                if ($constants:DEBUG) then
+                                    "You are in debug mode so no email was sent.  This report *would* have been mailed to:"
+                                else if ($action eq "view") then
+                                    "You requested only to *view* the results.  These were not mailed.  They would have been mailed to:"
+                                else 
+                                    "The following was emailed to:"
+                            }
+                            <xhtml:br />
                             <xhtml:br />
                             {
                                 for $address in $constants:MAIL_DAILYNAMES_TO/em:Address

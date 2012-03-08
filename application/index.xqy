@@ -52,10 +52,11 @@ let $files := xdmp:filesystem-directory($constants:DAYNAME_DIR)
 let $filestable :=
     <xhtml:table style="width: 100%;border-spacing: 3px;">
         <xhtml:tr style="font-weight: bold;">
-            <xhtml:td style="width: 40%;">File</xhtml:td>
+            <xhtml:td style="width: 30%;">File</xhtml:td>
             <xhtml:td style="width: 10%;">Processed</xhtml:td>
             <xhtml:td style="width: 30%;">Processed Date</xhtml:td>
-            <xhtml:td style="width: 20%;">Action</xhtml:td>
+            <xhtml:td style="width: 15%;"><xhtml:br /></xhtml:td>
+            <xhtml:td style="width: 15%;"><xhtml:br /></xhtml:td>
         </xhtml:tr>
         {
             for $f in $files/dir:entry[1 to 30 and xs:string(dir:filename) != "empty.txt"]
@@ -73,13 +74,15 @@ let $filestable :=
                         (
                             <xhtml:td><xhtml:img src="static/images/x.png" /></xhtml:td>,
                             <xhtml:td><xhtml:br /></xhtml:td>,
-                            <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}">Process</xhtml:a></xhtml:td>
+                            <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=view">View Report</xhtml:a></xhtml:td>,
+                            <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=email">Email Report</xhtml:a></xhtml:td>
                         )
                     else
                         (
                             <xhtml:td><xhtml:img src="static/images/check.png" /></xhtml:td>,
                             <xhtml:td>{$processed-date}</xhtml:td>,
-                            <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}"><xhtml:b>Re-</xhtml:b>Process</xhtml:a></xhtml:td>
+                            <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=view">View Report</xhtml:a></xhtml:td>,
+                            <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=email"><xhtml:b>Re-</xhtml:b>Email</xhtml:a></xhtml:td>
                         )
                 }
         }

@@ -32,6 +32,12 @@ module namespace constants = 'info:lc/auth-report/constants#';
 declare namespace em="URN:ietf:params:email-xml:";
 
 (:~
+:   This variable is used by the app to determine whether it is
+:   in production or development.  If set to "true" no emails will be sent.
+:)
+declare variable $DEBUG as xs:boolean := fn:true();
+
+(:~
 :   Activity Log - should be absolute path
 :   This needs to be writeable
 :)

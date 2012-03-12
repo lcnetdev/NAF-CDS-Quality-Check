@@ -4,7 +4,7 @@ date_default_timezone_set('America/New_York');
 
 require_once("ftp_creds.php");
 
-$lastDownload = trim(file_get_contents("last_daily_name_retrieved.txt"));
+$lastDownload = trim(file_get_contents(WORKINGDIR . "last_daily_name_retrieved.txt"));
 
 $nextday = strtotime($lastDownload . " +1 day");
 

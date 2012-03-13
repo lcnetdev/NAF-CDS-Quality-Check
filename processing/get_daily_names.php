@@ -27,7 +27,7 @@ echo "Retrieving $lastDownloadFormatted \n";
 // try to download $server_file and save to $local_file
 if (ftp_get($conn_id, $localfile, $serverfile, FTP_BINARY)) {
     echo "Daily CDS name file successfully written to $localfile\n";
-    file_put_contents("last_daily_name_retrieved.txt" , date("Y-m-d" , $nextday));
+    file_put_contents(WORKINGDIR . "last_daily_name_retrieved.txt" , date("Y-m-d" , $nextday));
 } else {
     echo "There was a problem retrieving the CDS daily name file.\n";
 }

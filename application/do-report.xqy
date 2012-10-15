@@ -130,7 +130,37 @@ let $records-deleted :=
         else
             ()
 let $records-deleted := xs:string(fn:count($records-deleted))
-    
+
+let $records-deleted-split := 
+    for $r in $marcxml//marcxml:record
+    let $l := xs:string($r/marcxml:leader[1])
+    return
+        if ( fn:substring($l, 6, 1) eq "s" ) then
+            $l
+        else
+            ()
+let $records-deleted-split := xs:string(fn:count($records-deleted-split))
+
+let $records-deleted-replaced := 
+    for $r in $marcxml//marcxml:record
+    let $l := xs:string($r/marcxml:leader[1])
+    return
+        if ( fn:substring($l, 6, 1) eq "x" ) then
+            $l
+        else
+            ()
+let $records-deleted-replaced := xs:string(fn:count($records-deleted-replaced))
+
+let $records-obsolete := 
+    for $r in $marcxml//marcxml:record
+    let $l := xs:string($r/marcxml:leader[1])
+    return
+        if ( fn:substring($l, 6, 1) eq "o" ) then
+            $l
+        else
+            ()
+let $records-obsolete := xs:string(fn:count($records-obsolete))
+
 let $xquery-base := 
       "xquery version '1.0-ml';
        declare namespace l = 'http://local#';
@@ -183,6 +213,9 @@ Source file: ", $marcxml-filename , "
     New:            " , $records-new , "
     Modified:        " , $records-modified , "
     Deleted:          " , $records-deleted , "
+    Deleted-Split:     " , $records-deleted-split , "
+    Deleted-Replaced:  " , $records-deleted-replaced , "
+    Obsoleted:         " , $records-obsolete , "
 ",
 fn:string-join(
     for $tr in $testresults/rule

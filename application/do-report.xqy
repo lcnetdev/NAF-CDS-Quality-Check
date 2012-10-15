@@ -256,6 +256,10 @@ let $email :=
             <rf:subject>NACO Quality Report for {$email-attachment-base-filename}</rf:subject>
             <rf:from>
                 <em:Address>
+                    <em:name>Glenn Gardner</em:name>
+                    <em:adrs>ggar@loc.gov</em:adrs>
+                </em:Address>
+                <em:Address>
                     <em:name>Ford, Kevin</em:name>
                     <em:adrs>kefo@loc.gov</em:adrs>
                 </em:Address>

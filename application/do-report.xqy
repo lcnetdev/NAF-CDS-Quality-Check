@@ -101,6 +101,35 @@ declare function local:marcxml2text($record) {
 };
 
 let $records-count := count($marcxml/marcxml:collection/marcxml:record)
+let $records-new := 
+    for $r in $marcxml//marcxml:record
+    let $l := xs:string($r/marcxml:leader[1])
+    return
+        if ( fn:substring($l, 6, 1) eq "n" ) then
+            $l
+        else
+            ()
+let $records-new := xs:string(fn:count($records-new))
+
+let $records-modified := 
+    for $r in $marcxml//marcxml:record
+    let $l := xs:string($r/marcxml:leader[1])
+    return
+        if ( fn:substring($l, 6, 1) eq "c" ) then
+            $l
+        else
+            ()
+let $records-modified := xs:string(fn:count($records-modified))
+
+let $records-deleted := 
+    for $r in $marcxml//marcxml:record
+    let $l := xs:string($r/marcxml:leader[1])
+    return
+        if ( fn:substring($l, 6, 1) eq "d" ) then
+            $l
+        else
+            ()
+let $records-deleted := xs:string(fn:count($records-deleted))
     
 let $xquery-base := 
       "xquery version '1.0-ml';
@@ -151,6 +180,9 @@ let $testresults :=
 let $results := fn:concat("
 Source file: ", $marcxml-filename , "
 " , $records-count , " record(s) in source file.
+    New:            " , $records-new , "
+    Modified:        " , $records-modified , "
+    Deleted:          " , $records-deleted , "
 ",
 fn:string-join(
     for $tr in $testresults/rule

@@ -103,6 +103,8 @@ declare variable $RULES_DAILYNAMES as element() :=
                 </test>
             </tests>
         </rule>
+        <!--
+        Disabled for now - 8 March 2013 - because of on-going batch RDA changes.
         <rule name="RDA Records" desc="RDA Records" report-results="true">
             <tests>
                 <test>
@@ -117,6 +119,7 @@ declare variable $RULES_DAILYNAMES as element() :=
                 </test>
             </tests>
         </rule>
+        -->
         <rule name="040 $e AND 008/10=c,a,b,d" desc="040 $e AND 008/10=c,a,b,d" report-results="true">
             <tests>
                 <test>

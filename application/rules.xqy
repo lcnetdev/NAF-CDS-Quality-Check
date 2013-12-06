@@ -39,11 +39,13 @@ declare variable $RULES_DAILYNAMES as element() :=
                 <test>xs:boolean($l:r/marcxml:datafield[@tag="040"]/marcxml:subfield[@code="b"]!="eng")</test>
             </tests>
         </rule>
+        <!--
         <rule name="Number Sign" desc="AND XXX=#" report-results="true">
             <tests>
                 <test>fn:matches( fn:string-join($l:r//text(), " "), '#')</test>
             </tests>
         </rule>
+        -->
         <rule name="Superscript Zero" desc="AND XXX=⁰" report-results="true">
             <tests>
                 <test>fn:matches( fn:string-join($l:r//text(), " "), '⁰')</test>

@@ -150,6 +150,21 @@ declare variable $RULES_DAILYNAMES as element() :=
                 </test>
             </tests>
         </rule>
+        <rule name="If 008/10='z' then 008/32 cannot equal 'b'" desc="If 008/10='z' then 008/32 cannot equal 'b'" report-results="true">
+            <tests>
+                <test>
+                    let $field008-10 := fn:substring( xs:string($l:r/marcxml:controlfield[@tag="008"][1]) , 10 + 1 , 1)
+                    let $field008-32 := fn:substring( xs:string($l:r/marcxml:controlfield[@tag="008"][1]) , 32 + 1 , 1)
+                    return
+                        if ( 
+                            $field008-10 eq "z" and $field008-32 eq "b"
+                           ) then
+                        fn:true()
+                    else
+                        fn:false()
+                </test>
+            </tests>
+        </rule>
         <rule name="Non-Latin in 1XX" desc="Non-Latin in 1XX" report-results="true">
             <tests>
                 <test>

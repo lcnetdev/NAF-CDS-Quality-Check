@@ -27,8 +27,9 @@ xquery version "1.0";
 :)
 
 (: MODULES :)
-import module namespace constants      = "info:lc/auth-report/constants#" at "constants.xqy";
-import module namespace transmit       = "info:lc/id-modules/transmit#" at "modules/module.Transmit.xqy";
+import module namespace constants   = "info:lc/auth-report/constants#" at "constants.xqy";
+import module namespace rules       = "info:lc/auth-report/rules#" at "rules.xqy";
+import module namespace transmit    = "info:lc/id-modules/transmit#" at "modules/module.Transmit.xqy";
 
 (: NAMESPACES :)
 declare namespace xhtml="http://www.w3.org/1999/xhtml"; 
@@ -173,7 +174,7 @@ let $testresults :=
     <results>
     {
     
-    for $rule in $constants:RULES_DAILYNAMES/rule
+    for $rule in $rules:RULES_DAILYNAMES/rule
     let $violations := 
         for $r in $marcxml/marcxml:collection/marcxml:record
         let $xquery := fn:concat($xquery-base, xs:string($rule/tests/test)) 

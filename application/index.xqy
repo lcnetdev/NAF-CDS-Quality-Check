@@ -59,7 +59,7 @@ let $filestable :=
             <xhtml:td style="width: 15%;"><xhtml:br /></xhtml:td>
         </xhtml:tr>
         {
-            for $f in $files/dir:entry[1 to 30 and xs:string(dir:filename) != "empty.txt"]
+           (for $f in $files/dir:entry[xs:string(dir:filename) != "empty.txt"]
             let $fname := xs:string($f/dir:filename)
             let $processed-date := 
                 if ( $processed-files/activity:processed[@file = $fname] ) then
@@ -84,7 +84,7 @@ let $filestable :=
                             <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=view">View Report</xhtml:a></xhtml:td>,
                             <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=email"><xhtml:b>Re-</xhtml:b>Email</xhtml:a></xhtml:td>
                         )
-                }
+                })[position() = 1 to 30]
         }
     </xhtml:table>
     

@@ -6,6 +6,7 @@ processing/ftp_creds.php
 application/constants.xqy
 application/logs/activity.xml
 data/*/*.xml
+data/*/*.gz
 
 # Ignore objects and archives.
 .[bps]*

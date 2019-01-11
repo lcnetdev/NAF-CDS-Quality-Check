@@ -2,7 +2,7 @@
 
 date_default_timezone_set('America/New_York');
 
-require_once("ftp_creds.php");
+require_once("/marklogic/id/NAF-CDS-Quality-Check/processing/ftp_creds.php");
 
 $lastDownload = trim(file_get_contents(WORKINGDIR . "last_daily_name_retrieved.txt"));
 
@@ -28,6 +28,7 @@ echo "Retrieving $lastDownloadFormatted \n";
 if (ftp_get($conn_id, $localfile, $serverfile, FTP_BINARY)) {
     echo "Daily CDS name file successfully written to $localfile\n";
     file_put_contents(WORKINGDIR . "last_daily_name_retrieved.txt" , date("Y-m-d" , $nextday));
+    chmod($localfile,0775) ;
 } else {
     echo "There was a problem retrieving the CDS daily name file.\n";
 }

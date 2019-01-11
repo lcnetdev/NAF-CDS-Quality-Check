@@ -267,5 +267,71 @@ declare variable $RULES_DAILYNAMES as element() :=
                 </test>
             </tests>
         </rule>
+        <rule name="Invalid URI ($u) in 670 - No protocol (http/https)" desc="Invalid URI ($u) in 670 - No protocol (http/https)" report-results="true">
+            <tests>
+                <test>
+                    let $field670sUs := $l:r/marcxml:datafield[@tag="670"]/marcxml:subfield[@code="u"] 
+                    let $test := 
+                        for $f in $field670sUs
+                        let $u := xs:string($f)
+                        return
+                            if (fn:starts-with($u, "http") ) then
+                                (: Test passed :)
+                                fn:false()
+                            else if (fn:starts-with($u, "ftp") ) then
+                                (: Test passed :)
+                                fn:false()
+                            else 
+                                fn:true()
+                    return
+                        if ( fn:index-of($test, fn:true()) ) then
+                            fn:true()
+                        else
+                            fn:false()
+                </test>
+            </tests>
+        </rule>
+        <rule name="Invalid URI ($u) in 670 - Invalid characters, parens or backslash" desc="Invalid URI ($u) in 670 - Invalid characters, parens or backslash" report-results="true">
+            <tests>
+                <test>
+                    let $field670sUs := $l:r/marcxml:datafield[@tag="670"]/marcxml:subfield[@code="u"] 
+                    let $test := 
+                        for $f in $field670sUs
+                        let $u := xs:string($f)
+                        return
+                            if ( fn:matches($u, "^\(") and fn:matches($u, "\)$") ) then
+                                fn:true()
+                            else if ( fn:matches($u, "\\") ) then
+                                fn:true()
+                            else 
+                                fn:false()
+                    return
+                        if ( fn:index-of($test, fn:true()) ) then
+                            fn:true()
+                        else
+                            fn:false()
+                </test>
+            </tests>
+        </rule>
+        <rule name="Invalid URI ($u) in 670 - Space in field" desc="Invalid URI ($u) in 670 - Space in field" report-results="true">
+            <tests>
+                <test>
+                    let $field670sUs := $l:r/marcxml:datafield[@tag="670"]/marcxml:subfield[@code="u"] 
+                    let $test := 
+                        for $f in $field670sUs
+                        let $u := xs:string($f)
+                        return
+                            if ( fn:matches($u, " ") ) then
+                                fn:true()
+                            else 
+                                fn:false()
+                    return
+                        if ( fn:index-of($test, fn:true()) ) then
+                            fn:true()
+                        else
+                            fn:false()
+                </test>
+            </tests>
+        </rule>
     </rules>;
         

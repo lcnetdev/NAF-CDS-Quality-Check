@@ -9,7 +9,7 @@ data/*/*.xml
 data/*/*.gz
 
 # Ignore objects and archives.
-.[bps]*
+.[bpsg]*
 
 # Ignore any file named foo.txt.
 # foo.txt

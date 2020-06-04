@@ -1,0 +1,10 @@
+{
+  "role-name" : "NAF-CDS-Quality-Check-user-role",
+  "description" : "User with least privileges to run application.",
+  "role" : [],
+  "privilege" : [ {
+    "privilege-name" : "any-uri",
+    "action" : "http://marklogic.com/xdmp/privileges/any-uri",
+    "kind" : "execute"
+  } ]
+}

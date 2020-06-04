@@ -1,0 +1,24 @@
+#!/bin/bash
+
+ENVIRO=$1
+ACTION=$2
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+#### 
+# THESE VALUES WILL BE SPECIFIC TO YOUR ENVIRONMENT
+####
+
+MLADMIN=u
+MLPASSWORD=p
+
+######
+######
+
+
+echo 
+if [ "$ENVIRO" != "local" ] && [ "$ENVIRO" != "staging" ];
+then
+  echo "\$ENVIRO not specified or not correct.  Should be one of: local, staging."
+  exit 0
+fi

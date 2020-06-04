@@ -1,0 +1,14 @@
+{
+  "forest-name" : "NAF-CDS-Quality-Check-modules",
+  "enabled" : true,
+  "host": "%%mlHostName%%",
+  "data-directory": "%%mlForestDataDirectory%%",
+  "large-data-directory" : "",
+  "fast-data-directory" : "",
+  "updates-allowed" : "all",
+  "availability" : "online",
+  "rebalancer-enable" : true,
+  "failover-enable" : true,
+  "database-replication" : null,
+  "database" : "NAF-CDS-Quality-Check-modules"
+}

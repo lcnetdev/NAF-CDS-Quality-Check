@@ -9,6 +9,9 @@ source $DIR/gradlew-params
 if [ "$ACTION" == "reload" ];
 then
     ./gradlew --info mlReloadModules -PenvironmentName=$ENVIRO -PmlUsername=$MLADMIN -PmlPassword=$MLPASSWORD
+elif [ "$ACTION" == "watch" ];
+then
+    ./gradlew --info mlWatch -PenvironmentName=$ENVIRO -PmlUsername=$MLADMIN -PmlPassword=$MLPASSWORD
 else
     ./gradlew --info mlLoadModules -PenvironmentName=$ENVIRO -PmlUsername=$MLADMIN -PmlPassword=$MLPASSWORD
 fi

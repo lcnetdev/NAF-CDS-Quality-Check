@@ -325,10 +325,6 @@ let $email :=
                     <em:name>Gardner, Glenn</em:name>
                     <em:adrs>ggar@loc.gov</em:adrs>
                 </em:Address>
-                <em:Address>
-                    <em:name>Ford, Kevin</em:name>
-                    <em:adrs>kevinford@loc.gov</em:adrs>
-                </em:Address>
             </rf:from>
             <rf:to>
             {

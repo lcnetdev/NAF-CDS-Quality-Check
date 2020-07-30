@@ -17,8 +17,10 @@ MLPASSWORD=p
 
 
 echo 
-if [ "$ENVIRO" != "local" ] && [ "$ENVIRO" != "staging" ];
+if [ "$ENVIRO" != "local" ] && [ "$ENVIRO" != "preprod" ];
 then
-  echo "\$ENVIRO not specified or not correct.  Should be one of: local, staging."
+  echo "\$ENVIRO not specified or not correct.  Should be one of: local, preprod."
   exit 0
 fi
+
+export GRADLE_OPTS="-Dfile.encoding=utf-8"

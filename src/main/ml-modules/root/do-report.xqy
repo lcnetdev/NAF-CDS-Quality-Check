@@ -63,7 +63,7 @@ declare variable $marcxmldata-filename := xdmp:get-request-field-filename("marcx
 
 declare variable $marcxml :=  
         if ($file ne "") then
-            xdmp:unquote(xdmp:filesystem-file( fn:concat($constants:DAYNAME_DIR , $file) ))
+            xdmp:unquote(xdmp:filesystem-file( fn:concat($constants:DAYNAME_DIR , $file, "/adds_changes") ))
         else
             xdmp:unquote($marcxmldata);
             
@@ -268,7 +268,7 @@ let $activity-log-save :=
         let $activity-log-file := xdmp:unquote(xdmp:filesystem-file($constants:ACTIVITY_LOG))
         let $new-processed-element := 
             element activity:processed {
-                attribute file {$marcxml-filename},
+                attribute file {$file},
                 attribute datetime {fn:current-dateTime()}
             }
         let $activity-log := 
@@ -285,25 +285,24 @@ let $activity-log-save :=
 let $email-newline := "&#13;&#10;"
 let $email-boundary := concat("ar", xdmp:random())
 let $email-content-type := concat("multipart/mixed; boundary=",$email-boundary)
-let $email-attachment-base-filename := fn:replace( $marcxml-filename , '.records.xml' , '' )
-let $email-attachment-base-filename := fn:replace( $email-attachment-base-filename , 'd' , 'dlc' )
+let $email-attachment-base-filename := fn:concat( 'dlc', fn:substring($file, 3) )
 let $email-attachments :=
     fn:string-join(
         for $tr in $testresults/rule
         let $violations := xs:string($tr)
+        where xs:integer($tr/@violations) > 10 and $tr/@report-results eq "true"
         return
-            if ( xs:integer($tr/@violations) > 10 and $tr/@report-results eq "true") then
-                let $attachment-fname := fn:replace( xs:string($tr/@name) , " |=|\.|\$,'" , "")
-                let $attachment-fname := fn:concat($email-attachment-base-filename, "-", $attachment-fname , ".txt")
-                return
-                    fn:concat(
-                        "Content-Type: text/plain; charset=UTF-8", $email-newline,
-                        "Content-Disposition: attachment; filename=", $attachment-fname, $email-newline,
-                        "Content-Transfer-Encoding: base64", $email-newline,
-                        $email-newline,
-                        xdmp:base64-encode(fn:replace($violations, "\n", $email-newline)), $email-newline
-                    )
-            else (),
+            let $attachment-fname := fn:replace( xs:string($tr/@name) , " |,|'|=|\.|\$,'" , "")
+            let $attachment-fname := xdmp:diacritic-less($attachment-fname)
+            let $attachment-fname := fn:concat($email-attachment-base-filename, "-", $attachment-fname , ".txt")
+            return
+                fn:concat(
+                    "Content-Type: text/plain; charset=UTF-8", $email-newline,
+                    "Content-Disposition: attachment; filename=", $attachment-fname, $email-newline,
+                    "Content-Transfer-Encoding: base64", $email-newline,
+                    $email-newline,
+                    xdmp:base64-encode(fn:replace($violations, "\n", $email-newline)), $email-newline
+                ),
 	fn:concat("--",$email-boundary,$email-newline))
         
 let $email-content := concat(
@@ -319,15 +318,12 @@ let $email :=
     if (fn:not($constants:DEBUG) and $action eq "email") then
         xdmp:email(
         <em:Message>
+            <rf:message-id>{fn:concat("<", $file, ".", $email-boundary, "@mlinaws>")}</rf:message-id>
             <rf:subject>NACO Quality Report for {$email-attachment-base-filename}</rf:subject>
             <rf:from>
                 <em:Address>
-                    <em:name>Glenn Gardner</em:name>
+                    <em:name>Gardner, Glenn</em:name>
                     <em:adrs>ggar@loc.gov</em:adrs>
-                </em:Address>
-                <em:Address>
-                    <em:name>Ford, Kevin</em:name>
-                    <em:adrs>kefo@loc.gov</em:adrs>
                 </em:Address>
             </rf:from>
             <rf:to>
@@ -404,7 +400,8 @@ let $html :=
                         </xhtml:p>
                         <xhtml:br />
                         <xhtml:pre>
-                            {$report}                    
+                            {$report}
+                            <!-- {$email-content} -->
                         </xhtml:pre>
                         <xhtml:br />
                         <xhtml:br />

@@ -84,7 +84,7 @@ let $filestable :=
                             <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=view">View Report</xhtml:a></xhtml:td>,
                             <xhtml:td><xhtml:a href="do-report.xqy?file={$fname}&amp;action=email"><xhtml:b>Re-</xhtml:b>Email</xhtml:a></xhtml:td>
                         )
-                })[position() = 1 to 30]
+                })[position() = 1 to 210]
         }
     </xhtml:table>
     

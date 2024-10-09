@@ -1,7 +1,7 @@
 xquery version "1.0";
 
 (:
-:   Module Name: Contants file
+:   Module Name: Constants file
 :
 :   Module Version: 1.0
 :
@@ -41,11 +41,13 @@ declare variable $DEBUG as xs:boolean := fn:true();
 :   This needs to be writeable
 :)
 declare variable $ACTIVITY_LOG as xs:string := "logs/activity.xml";
+(: declare variable $ACTIVITY_LOG as xs:string := "s3://path-to-s3-bucket/quality_tracking/activity.xml"; :)
 
 (:~
 :   DAYNAME Directory - should be *absolute* path
 :)
 declare variable $DAYNAME_DIR as xs:string := "";
+(: declare variable $DAYNAME_DIR as xs:string := "s3://path-to-s3-bucket/data/"; :)
 
 (:~
 :   The daily-name quality report will be mailed to these individuals.  

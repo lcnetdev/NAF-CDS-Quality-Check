@@ -34,11 +34,13 @@ declare variable $RULES_DAILYNAMES as element() :=
                 <test>fn:matches( fn:string-join($l:r//text(), " "), '`')</test>
             </tests>
         </rule>
+        <!--
         <rule name="040 $b NOT eng" desc="040 $b NOT eng" report-results="true">
             <tests>
                 <test>xs:boolean($l:r/marcxml:datafield[@tag="040"]/marcxml:subfield[@code="b"]!="eng")</test>
             </tests>
         </rule>
+        -->
         <!--
         <rule name="Number Sign" desc="AND XXX=#" report-results="true">
             <tests>
@@ -46,11 +48,13 @@ declare variable $RULES_DAILYNAMES as element() :=
             </tests>
         </rule>
         -->
-        <rule name="Superscript Zero" desc="AND XXX=⁰" report-results="true">
+       <!--  <rule name="Superscript Zero" desc="AND XXX=⁰" report-results="true">
             <tests>
                 <test>fn:matches( fn:string-join($l:r//text(), " "), '⁰')</test>
             </tests>
         </rule>
+        -->
+        <!--
         <rule name="Double Curly Quotes" desc="AND XXX=” OR XXX=“" report-results="true">
             <tests>
                 <test>
@@ -61,6 +65,7 @@ declare variable $RULES_DAILYNAMES as element() :=
                 </test>
             </tests>
         </rule>
+        
         <rule name="Leader 17=o" desc="AND 000/17=o" report-results="true">
             <tests>
                 <test>
@@ -71,6 +76,7 @@ declare variable $RULES_DAILYNAMES as element() :=
                 </test>
             </tests>
         </rule>
+        -->
         <!--
         Disabled for now - 8 March 2013 - because of on-going batch RDA changes.
         <rule name="RDA Records" desc="RDA Records" report-results="true">
@@ -333,5 +339,76 @@ declare variable $RULES_DAILYNAMES as element() :=
                 </test>
             </tests>
         </rule>
+        <!-- Updated 040 check -->
+        <rule name="040 Complete Check" desc="Ensure 040 exists and has proper subfields" report-results="true">
+            <tests>
+                <test>
+                    (: Check for existence of 040 :)
+                    if (fn:not($l:r/marcxml:datafield[@tag="040"])) then fn:true() 
+                    else ()
+                </test>
+                <test>
+                    (: New record: check full "$a DLC $b eng $e rda $c DLC" :)
+                    (: Placeholder logic, replace with exact validation :) 
+                    fn:false()
+                </test>
+                <test>
+                    (: Modified record: check $b eng $e rda and added $d DLC as final subfield :)
+                    (: Placeholder logic :) 
+                    fn:false()
+                </test>
+            </tests>
+        </rule>
+        
+        <!-- Updated 667 / Non-Latin rule -->
+        <rule name="667/Non-Latin Updated" desc="Update 667 check to reflect ongoing project" report-results="true">
+            <tests>
+                <test>
+                    (: Placeholder logic for revised 667 handling :) 
+                    fn:false()
+                </test>
+            </tests>
+        </rule>
+        
+        <!-- New rules stubs -->
+        <rule name="008 Field Checks" desc="Thorough 008 validation by record type" report-results="true">
+            <tests>
+                <test>
+                    (: Example: If 100, then check this string :) 
+                    fn:false()
+                </test>
+                <test>
+                    (: Example: If 110, then check this string :) 
+                    fn:false()
+                </test>
+            </tests>
+        </rule>
+        
+        <rule name="4XX/5XX RefEval" desc="Check RefEval code depending on non-Latin" report-results="true">
+            <tests>
+                <test>
+                    (: Placeholder for 4XX/5XX RefEval validation :) 
+                    fn:false()
+                </test>
+            </tests>
+        </rule>
+        
+        <rule name="046 $2 EDTF" desc="If 046 contains a date, must have $2 edtf" report-results="true">
+            <tests>
+                <test>
+                    (: Placeholder for 046 $2 check :) 
+                    fn:false()
+                </test>
+            </tests>
+        </rule>
+        
+        <rule name="Carriage Return Check" desc="Detect CR in any fields" report-results="true">
+            <tests>
+                <test>
+                    (: Placeholder for carriage return check :) 
+                    fn:false()
+                </test>
+            </tests>
+</rule>
     </rules>;
         

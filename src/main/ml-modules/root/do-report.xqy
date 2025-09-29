@@ -174,7 +174,7 @@ let $testresults :=
     <results>
     {
     
-    for $rule in $rules:RULES_DAILYNAMES/rule
+   (: for $rule in $rules:RULES_DAILYNAMES/rule
     let $violations := 
         for $r in $marcxml/marcxml:collection/marcxml:record
         let $xquery := fn:concat($xquery-base, xs:string($rule/tests/test)) 
@@ -202,8 +202,36 @@ let $testresults :=
             $rule/@report-results,
             attribute violations {fn:count($violations)},
             $formatted-violations
-        }
-            
+        } :)
+
+        for $rule in $rules:RULES_DAILYNAMES/rule
+        let $violations := 
+            for $r in $marcxml/marcxml:collection/marcxml:record
+            for $test in $rule/tests/test
+            let $xquery := fn:concat($xquery-base, string($test))
+            let $result := xdmp:eval($xquery, (xs:QName("l:r"), $r))
+            return 
+                if ($result eq fn:true()) then
+                    local:marcxml2text($r)
+                else
+                    ()
+        let $formatted-violations := 
+            if (fn:count($violations) > 0) then
+                fn:concat(
+                    "&#10;***", xs:string($rule/@name), "***", "&#10;",
+                    fn:string-join($violations, ""),
+                    "&#10;"
+                )
+            else ""
+        return
+            element rule {
+                $rule/@name,
+                $rule/@desc,
+                $rule/@report-results,
+                attribute violations {fn:count($violations)},
+                $formatted-violations
+            }
+           
     }
     </results>
         
